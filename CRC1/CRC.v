@@ -1,0 +1,76 @@
+module CRC(CLK, RST, CRC, DATA);
+input CLK,RST;
+input [0:0] DATA;
+output [63:0] CRC;
+reg [63:0] CRC;
+ 
+always @(posedge CLK or negedge RST )
+if(!RST)
+CRC=64'b1111111111111111111111111111111111111111111111111111111111111111 ;
+else  begin
+  CRC[63] <= CRC[62] ;
+  CRC[62] <= CRC[63] ^ CRC[61] ^ DATA[0] ;
+  CRC[61] <= CRC[60] ;
+  CRC[60] <= CRC[59] ;
+  CRC[59] <= CRC[58] ;
+  CRC[58] <= CRC[57] ;
+  CRC[57] <= CRC[61] ^ CRC[56] ^ DATA[0] ;
+  CRC[56] <= CRC[55] ;
+  CRC[55] <= CRC[61] ^ CRC[54] ^ DATA[0] ;
+  CRC[54] <= CRC[61] ^ CRC[53] ^ DATA[0] ;
+  CRC[53] <= CRC[61] ^ CRC[52] ^ DATA[0] ;
+  CRC[52] <= CRC[61] ^ CRC[51] ^ DATA[0] ;
+  CRC[51] <= CRC[50] ;
+  CRC[50] <= CRC[49] ;
+  CRC[49] <= CRC[48] ;
+  CRC[48] <= CRC[47] ;
+  CRC[47] <= CRC[61] ^ CRC[46] ^ DATA[0] ;
+  CRC[46] <= CRC[61] ^ CRC[45] ^ DATA[0] ;
+  CRC[45] <= CRC[61] ^ CRC[44] ^ DATA[0] ;
+  CRC[44] <= CRC[43] ;
+  CRC[43] <= CRC[42] ;
+  CRC[42] <= CRC[41] ;
+  CRC[41] <= CRC[40] ;
+  CRC[40] <= CRC[61] ^ CRC[39] ^ DATA[0] ;
+  CRC[39] <= CRC[61] ^ CRC[38] ^ DATA[0] ;
+  CRC[38] <= CRC[61] ^ CRC[37] ^ DATA[0] ;
+  CRC[37] <= CRC[61] ^ CRC[36] ^ DATA[0] ;
+  CRC[36] <= CRC[35] ;
+  CRC[35] <= CRC[61] ^ CRC[34] ^ DATA[0] ;
+  CRC[34] <= CRC[33] ;
+  CRC[33] <= CRC[61] ^ CRC[32] ^ DATA[0] ;
+  CRC[32] <= CRC[61] ^ CRC[31] ^ DATA[0] ;
+  CRC[31] <= CRC[61] ^ CRC[30] ^ DATA[0] ;
+  CRC[30] <= CRC[29] ;
+  CRC[29] <= CRC[61] ^ CRC[28] ^ DATA[0] ;
+  CRC[28] <= CRC[27] ;
+  CRC[27] <= CRC[61] ^ CRC[26] ^ DATA[0] ;
+  CRC[26] <= CRC[25] ;
+  CRC[25] <= CRC[24] ;
+  CRC[24] <= CRC[61] ^ CRC[23] ^ DATA[0] ;
+  CRC[23] <= CRC[61] ^ CRC[22] ^ DATA[0] ;
+  CRC[22] <= CRC[61] ^ CRC[21] ^ DATA[0] ;
+  CRC[21] <= CRC[61] ^ CRC[20] ^ DATA[0] ;
+  CRC[20] <= CRC[19] ;
+  CRC[19] <= CRC[61] ^ CRC[18] ^ DATA[0] ;
+  CRC[18] <= CRC[17] ;
+  CRC[17] <= CRC[61] ^ CRC[16] ^ DATA[0] ;
+  CRC[16] <= CRC[15] ;
+  CRC[15] <= CRC[14] ;
+  CRC[14] <= CRC[13] ;
+  CRC[13] <= CRC[61] ^ CRC[12] ^ DATA[0] ;
+  CRC[12] <= CRC[61] ^ CRC[11] ^ DATA[0] ;
+  CRC[11] <= CRC[10] ;
+  CRC[10] <= CRC[61] ^ CRC[9] ^ DATA[0] ;
+  CRC[9] <= CRC[61] ^ CRC[8] ^ DATA[0] ;
+  CRC[8] <= CRC[7] ;
+  CRC[7] <= CRC[61] ^ CRC[6] ^ DATA[0] ;
+  CRC[6] <= CRC[5] ;
+  CRC[5] <= CRC[4] ;
+  CRC[4] <= CRC[61] ^ CRC[3] ^ DATA[0] ;
+  CRC[3] <= CRC[2] ;
+  CRC[2] <= CRC[1] ;
+  CRC[1] <= CRC[61] ^ CRC[0] ^ DATA[0] ;
+  CRC[0] <= CRC[61] ^ DATA[0] ;
+end
+endmodule
